@@ -1,0 +1,3 @@
+To create a Django project on cmd type
+django-admin startproject project_name
+
