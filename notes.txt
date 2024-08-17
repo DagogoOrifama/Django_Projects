@@ -1,3 +1,49 @@
 To create a Django project on cmd type
 django-admin startproject project_name
 
+To startup the server type
+python3 manage.py runserver
+
+
+To create a new app in Django use
+python manage.py startapp app_name
+
+To create tables for the default apps that came with Django
+python manage.py migrate
+
+whenever you make changes to the django application
+python manage.py makemigrations App_name
+
+The above command returns a filename starting with a number
+eg 0001_initial.py, use 0001 to create the corresponding tables
+to keep track.
+
+To create the database tables use
+python manage.py sqlmigrate App_name 0001
+
+After the above, run this to finish the table creation
+python manage.py migrate
+
+To add data into the database taboe we use the interactive Django shell
+python django shell
+
+To interact with the tables we need to import the models into the shell,
+an example to import a model Item present in models.py in the food app
+from food.models import Item
+
+To view the data in the Item table use
+ Item.objects.all()
+
+ To add data into the database table Item, with columns item_name,item_desc and item_price use objects eg
+ a = Item(item_name="Pizza", item_desc="Cheesy Pizza", item_price=20)
+
+ After adding an item, type the following to save the data into the database
+ a.save()
+
+ To get the unique id of the added object use either
+ a.id 
+ a.pk
+
+To create a super user and access the admin panel to that can manage the database 
+
+ 
