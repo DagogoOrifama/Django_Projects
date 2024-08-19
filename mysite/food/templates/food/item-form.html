@@ -1,0 +1,9 @@
+{% extends 'food/base.html' %}
+{% block body %}
+<form action="" method="POST">
+    <!-- csrf_token tage is used for security to prevent cross-site scripting attack -->
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

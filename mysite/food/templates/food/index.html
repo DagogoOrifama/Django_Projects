@@ -1,0 +1,48 @@
+{% extends 'food/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagoris Food - Best online Food Shop</title>
+</head>
+<body>
+
+    {% block body %}
+    <h1>Welcome to Dagoris Food Hub</h1>
+    <!-- returning a list of item, using a for loop, with the django template language -->
+     {% for item in item_list %}
+     <div class="container-md">
+     <div class="row">
+        <div class="col-md-3 offset-md-2">
+            <img class="card img-thumbnail" src="{{ item.item_image }}" height="150px"/>
+        </div>
+        <div class="col-md-4">
+            <h3>{{ item.item_name }}</h3>
+            <h5> {{item.item_desc}} </h5>
+            <h6> {{item.item_price}} </h6>
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'food:detail' item.id %}" class="btn btn-success">Details</a>
+        </div>
+     </div>
+
+
+
+
+
+     <!-- displaying the item id and name -->
+        <!-- <ul>
+            <li> -->
+                <!-- hardcoded url -->
+                <!-- <a href="{{item.id}}">{{item.id}} -- {{item.item_name}}</a> -->
+                 <!-- removing hardcoded url and adding namespace (food) to url-->
+                <!-- <a href="{% url 'food:detail' item.id %}">{{item.id}} -- {{item.item_name}}</a>
+            </li>
+        </ul> -->
+    </div>
+     {% endfor %}
+
+    {% endblock %}
+</body>
+</html>

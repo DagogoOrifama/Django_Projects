@@ -1,27 +1,34 @@
-To create a Django project on cmd type
+To create a Django project on cmd type 
 django-admin startproject project_name
 
 To startup the server type
 python3 manage.py runserver
 
 
-To create a new app in Django use
+To create a new app in a Django project use either
 python manage.py startapp app_name
+django-admin startapp app_name
+
+First thing you do after creating an app is to copy the app
+config class name in apps.py and put in settings.py under
+INSTALLED_APP, for a member app it will be
+'members.apps.MembersConfig'
 
 To create tables for the default apps that came with Django
 python manage.py migrate
 
-whenever you make changes to the django application
+To create subsequent tables or whenever a model is modified, the 3 code below should be ran
+1. whenever you make changes to the django application
 python manage.py makemigrations App_name
 
 The above command returns a filename starting with a number
 eg 0001_initial.py, use 0001 to create the corresponding tables
 to keep track.
 
-To create the database tables use
+2. To create the database tables use
 python manage.py sqlmigrate App_name 0001
 
-After the above, run this to finish the table creation
+3. After the above, run this to finish the table creation
 python manage.py migrate
 
 To add data into the database taboe we use the interactive Django shell
@@ -42,8 +49,8 @@ To view the data in the Item table use
 
  To get the unique id of the added object use either
  a.id 
- a.pk
+ a.pk 
 
 To create a super user and access the admin panel to that can manage the database 
-
+python manage.py createsuperuser
  
