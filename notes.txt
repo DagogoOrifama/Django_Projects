@@ -20,12 +20,13 @@ python manage.py migrate
 To create subsequent tables or whenever a model is modified, the 3 code below should be ran
 1. whenever you make changes to the django application
 python manage.py makemigrations App_name
+python manage.py makemigrations
 
 The above command returns a filename starting with a number
 eg 0001_initial.py, use 0001 to create the corresponding tables
 to keep track.
 
-2. To create the database tables use
+2. To view the SQL statement that were executed from the migration above
 python manage.py sqlmigrate App_name 0001
 
 3. After the above, run this to finish the table creation
@@ -54,3 +55,56 @@ To view the data in the Item table use
 To create a super user and access the admin panel to that can manage the database 
 python manage.py createsuperuser
  
+
+ # whenever you use ImageField then pillow has to be installed to prevent error
+ pip install pillow
+
+ To add a model to the admin side, go to the admin.py on that app and register the model,
+ Example to register the Item model put this in the admin page
+admin.site.register(Item)
+
+
+To change the path for uploaded images in your django application
+On the settings.py, under Static files (CSS, JavaScript, Images)
+BASE_DIR gives the current project directory, 'pictures' specifies
+the new media directory. by default django saves images on the root directory
+MEDIA_ROOT = os.path.join(BASE_DIR,'pictures')
+MEDIA_URL = '/pictures/'
+
+To get access to the static files like img uploaded by the use add this to settings.py
+https://docs.djangoproject.com/en/5.1/howto/static-files/
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += [
+    # ... the rest of your URLconf goes here ...
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+Django Signals is used to automate processes in a django operation
+It ias the following
+- A Signal dispatcher which informa the application of occured changes. 
+  These changes can include user registration and sending signal to the
+  profile, to create a profile for that user
+To create a signal in users app, create a file called signals.py
+Also, you also have to import in the signal in the app using the apps.py
+  def ready(self):
+        import users.signals
+
+## Django views can also be created a class (class based views)
+
+## In a django application the views are connected to the url.py file
+## Next the views renders an html template
+
+To export the database (eg sqlite3) from a django application 
+By default, the SQLite database file is usually named db.sqlite3 and is located in the root directory of your Django project.
+1. Download SQLite Tools, sqlite-tools-win32-x86 (https://sqlite.org/download.html), Precompiled Binaries for Window
+2. Extract the contents of the downloaded ZIP file to a location on your computer (c:\sqlite)
+3. Add SQLite to the System PATH by editing it under Environment Variables
+4. Open a new terminal in VSCode, Type sqlite3 and press Enter. You should see the SQLite prompt
+5. use the cd command to navigate to the directory where your db.sqlite3 file is located.
+6. Run the Export Command: sqlite3 db.sqlite3 .dump > backup.sql
+
+
+## To build a Restful API in a Django app, you need the Django rest framework, which can be installed via terminal.
+pip install djangorestframwork

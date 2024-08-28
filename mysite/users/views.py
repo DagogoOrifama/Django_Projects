@@ -41,7 +41,9 @@ def register(request):
 #         form = UserCreationForm()
 #     return render(request, 'users/register.html', {'form':form})
 
-@login_required #restricts users who are not logged in to access the view
+#restricts users who are not logged in to access this view
+# if the user is not login it will redirect to login page as set by LOGIN_URL in setting.py
+@login_required 
 # create view for profile page
 def profilepage(request):
     return render(request, 'users/profile.html')

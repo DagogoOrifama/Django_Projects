@@ -1,9 +1,67 @@
 {% extends 'food/base.html' %}
 {% block body %}
-<form action="" method="POST">
-    <!-- csrf_token tage is used for security to prevent cross-site scripting attack -->
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">Save</button>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <div class="card-title font-weight-bold display-6">
+                        Add New Food Item
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <!-- csrf_token tage is used for security to prevent cross-site scripting attack -->
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ form.item_name.id_for_label }}">Item Name:</label>
+                            <input type="text" name="{{ form.item_name.name }}" id="{{ form.item_name.id_for_label }}" 
+                                   class="form-control" placeholder="{{ form.item_name.label }}" />
+                            <!-- Display any errors related to the username field -->
+                            <div class="invalid-feedback">
+                                {% for error in form.item_name.errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.item_desc.id_for_label }}">Item Name:</label>
+                            <input type="text" name="{{ form.item_desc.name }}" id="{{ form.item_desc.id_for_label }}" 
+                                   class="form-control" placeholder="{{ form.item_desc.label }}" />
+                            <!-- Display any errors related to the username field -->
+                            <div class="invalid-feedback">
+                                {% for error in form.item_desc.errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.item_price.id_for_label }}">Item Name:</label>
+                            <input type="text" name="{{ form.item_price.name }}" id="{{ form.item_price.id_for_label }}" 
+                                   class="form-control" placeholder="{{ form.item_price.label }}" />
+                            <!-- Display any errors related to the username field -->
+                            <div class="invalid-feedback">
+                                {% for error in form.item_price.errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.item_image.id_for_label }}">Item Image:</label>
+                            <input type="file" name="{{ form.item_image.name }}" id="{{ form.item_image.id_for_label }}" 
+                                   class="form-control-file my-2" />
+                            <!-- Display any errors related to the item_image field -->
+                            <div class="invalid-feedback">
+                                {% for error in form.item_image.errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info text-white mt-2">Add New Item</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,5 +1,60 @@
-<form method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Login</button>
-</form>
+{% extends 'food/base.html' %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <div class="card-title font-weight-bold display-6">
+                        Login Portal
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- <form method="POST"> -->
+                        <!-- {% csrf_token %} -->
+                        <!-- using loop in order to style the form fields -->
+                        <!-- {% for field in form %} -->
+                            <!-- <div class="form-group"> -->
+                                <!-- name of the form field -->
+                                <!-- {{ field.name }}  -->
+                                <!-- The input of the form -->
+                                 <!-- {{ field }} -->
+                            <!-- </div> -->
+                        <!-- {% endfor %} -->
+                        <!-- <button class="btn-info mt-2" type="submit">Login</button> -->
+                    <!-- </form> -->
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ form.username.id_for_label }}">Username:</label>
+                            <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" 
+                                   class="form-control" placeholder="{{ form.username.label }}" />
+                            <!-- Display any errors related to the username field -->
+                            <div class="invalid-feedback">
+                                {% for error in form.username.errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.password.id_for_label }}">Password:</label>
+                            <input type="password" name="{{ form.password.name }}" id="{{ form.password.id_for_label }}" 
+                                   class="form-control" placeholder="{{ form.password.label }}" />
+                            <!-- Display any errors related to the password field -->
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info mt-2">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
