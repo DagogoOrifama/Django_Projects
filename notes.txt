@@ -108,3 +108,14 @@ By default, the SQLite database file is usually named db.sqlite3 and is located 
 
 ## To build a Restful API in a Django app, you need the Django rest framework, which can be installed via terminal.
 pip install djangorestframwork
+
+After which you need to register the restframework under INSTALLED_APPS in the settings.py
+'rest_framework'
+
+## in order to generate a JSON response for an API, we take data in the django models and convert it to JSON using 
+## serializers or serialization. This can be done by creating a serializer in a file called serializers.py within yoyr app.
+## Import it from => from rest_framework import serializers
+
+
+## To add image field to the model or API, insal pillow, a package for working with images in django
+pip install pillow
