@@ -1,0 +1,37 @@
+This newapp project explains the concept of 
+* pagination
+* Search functionality 
+* User Permission
+
+
+create a virtual enviroment with virtualenv, first install virtualenv package
+pip install virtualenv
+
+To create a virtual enviroment say called env_name use
+virtualenv env_name
+
+To activate the enviroment use
+On Windows: env_name\Scripts\activate
+On macOS/Linux: source env_name/bin/activate
+
+Next install django
+pip install django
+
+Create django project
+django-admin startproject project_name
+
+Create new django app
+django-admin startapp app_name
+
+Create models and make migrations
+py manage.py makemigrations
+py manage.py migrate
+
+Next create super user, add username, email and password
+py manage.py createsuperuser
+
+Check admin portal
+py manage.py runserver
+
+To get all the install packages into the requirements.txt file
+pip freeze > requirements.txt
