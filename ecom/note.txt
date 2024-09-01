@@ -1,0 +1,6 @@
+1  Create project working directory ecom
+2. inside ecom created virtual enviroment ecomenv
+3. inside ecom created django project ecomsite
+4. inside the ecomsite create django app shop
+5. Go to settings.py file under INSTALLED_APP, specify the shop app
+6. 

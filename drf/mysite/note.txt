@@ -1,0 +1,1 @@
+This project uses the Django rest framework to create RESTFul API on movie data
